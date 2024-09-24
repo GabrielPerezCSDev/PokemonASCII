@@ -16,18 +16,18 @@ This project is a Pokémon simulation that implements various aspects of game me
     - [Build Instructions](#build-instructions)
   - [Usage](#usage)
     - [Sample Commands:](#sample-commands)
-  - [Contributing](#contributing)
-  - [License](#license)
 
 ## Overview
-This project models a Pokémon-like simulation environment, allowing the user to interact with Pokémon data, battle characters, and move through different environments. It includes implementations for handling character movements, simulating battles, and parsing data from external CSV files.
+This project models a Pokémon-like simulation environment, allowing the user to interact with Pokémon data, battle characters, and move through different environments. It includes implementations for handling character movements, simulating battles, and parsing data from external CSV files. The game will randomly generate maps by an algorithm I created. 
 
 ## Features
 - **Character Movement**: Supports different types of characters (e.g., Hiker, Rival, Swimmer) with varying movement abilities.
 - **Battle Simulation**: Simple battle mechanics triggered when characters meet.
 - **Heap Data Structures**: Utilizes a custom heap for managing character movement and actions.
 - **Data Parsing**: Parses CSV files to load Pokémon and move data.
-- **Pathfinding**: Implements pathfinding for characters to navigate the game map efficiently.
+- **Pathfinding**: Implements djikstra's algorithm pathfinding for characters to navigate the game map efficiently.
+- **Map-Generation**: Over 400 maps are proceduraly generated one-by-one as the playe moves into a new map (with maps saved in a matrix once created for backtracking) so that every level and playtrhough has a unique feel.
+- **Dificulty**: Maps get increasingly difficult as a function of the Mannhattan distance from the origin.
   
 ## File Structure
 ### Key source files:
@@ -51,29 +51,25 @@ This project models a Pokémon-like simulation environment, allowing the user to
 ### Build Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repository/project-name
+   git clone https://github.com/PokemonASII
    ```
-2. Navigate to the project directory and compile the source files:
+2. Navigate to the project directory and use the make file:
    ```bash
-   g++ character.cpp data.cpp poke327.cpp io.cpp heap.c -o pokesim
+   make
    ```
 3. Run the compiled program:
    ```bash
-   ./pokesim
+   ./poke_main
    ```
 
 ## Usage
 1. The simulation will start by generating a map and placing characters at random positions.
 2. You can interact with the simulation through the console by entering commands to move the player or simulate battles.
 3. The program will read Pokémon and moves data from CSV files (ensure these files are available in the working directory).
+4. The game continues until all of your pokemon are defeated
+5. See how far you can survuve and explore all the maps you can!
 
 ### Sample Commands:
 - Move player: Use directional commands to move.
 - Start battle: Automatically triggered when a character encounters a player.
-
-## Contributing
-Feel free to fork this project and submit pull requests. Contributions in terms of adding new features, improving algorithms, or fixing bugs are welcome.
-
-## License
-This project is licensed under the MIT License.
->>>>>>> 4e016a3 (Pushing the pokemon project to my github)
+- Change map: Move again at the borde of the map.
