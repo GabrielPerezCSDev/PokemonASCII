@@ -2,74 +2,122 @@
 
 # Pokémon Simulation Project
 
-This project is a Pokémon simulation that implements various aspects of game mechanics, including characters, movement, battle systems, and data manipulation. It uses a combination of custom data structures, heap algorithms, and CSV file parsing to model and simulate the game environment.
-
-## Table of Contents
-- [Pokémon Simulation Project](#pokémon-simulation-project)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Features](#features)
-  - [File Structure](#file-structure)
-    - [Key source files:](#key-source-files)
-  - [Installation](#installation)
-    - [Prerequisites](#prerequisites)
-    - [Build Instructions](#build-instructions)
-  - [Usage](#usage)
-    - [Sample Commands:](#sample-commands)
+A sophisticated Pokémon simulation built in C/C++ that features procedural map generation, advanced pathfinding algorithms, and dynamic difficulty scaling. The project implements custom data structures and algorithms to create an evolving game world with over 400 unique, procedurally generated maps.
 
 ## Overview
-This project models a Pokémon-like simulation environment, allowing the user to interact with Pokémon data, battle characters, and move through different environments. It includes implementations for handling character movements, simulating battles, and parsing data from external CSV files. The game will randomly generate maps by an algorithm I created. 
+
+This Pokémon simulation creates an expansive game world where:
+- Maps are procedurally generated based on player movement
+- Difficulty scales with Manhattan distance from origin
+- NPCs utilize advanced pathfinding algorithms
+- Custom data structures manage game mechanics
+- Battle systems integrate with character movement
 
 ## Features
-- **Character Movement**: Supports different types of characters (e.g., Hiker, Rival, Swimmer) with varying movement abilities.
-- **Battle Simulation**: Simple battle mechanics triggered when characters meet.
-- **Heap Data Structures**: Utilizes a custom heap for managing character movement and actions.
-- **Data Parsing**: Parses CSV files to load Pokémon and move data.
-- **Pathfinding**: Implements djikstra's algorithm pathfinding for characters to navigate the game map efficiently.
-- **Map-Generation**: Over 400 maps are proceduraly generated one-by-one as the playe moves into a new map (with maps saved in a matrix once created for backtracking) so that every level and playtrhough has a unique feel.
-- **Dificulty**: Maps get increasingly difficult as a function of the Mannhattan distance from the origin.
-  
-## File Structure
-### Key source files:
 
-1. **`character.cpp`** - Manages character movement and behavior, including the movement of NPCs like Hikers, Rivals, and Swimmers. It also implements different strategies for moving and pathfinding.
+### World Generation
+- **Procedural Map Creation**: Dynamic generation of over 400 unique maps
+- **Difficulty Scaling**: Map complexity increases with distance from origin
+- **Terrain Variety**: Multiple terrain types affecting movement and accessibility
+- **Persistent World**: Generated maps are stored in a matrix for consistent backtracking
 
-2. **`data.cpp`** - Handles loading and processing data from CSV files for objects like Pokémon and moves. This file implements methods for reading the CSV files, creating Pokémon objects, and printing Pokémon and move data.
+### Character System
+- **Multiple NPC Types**:
+  - Hikers with terrain-aware pathfinding
+  - Rivals with aggressive pursuit behavior
+  - Swimmers confined to water routes
+- **Custom Movement Patterns**: Each NPC type implements unique movement strategies
+- **Dijkstra's Algorithm**: Efficient pathfinding for NPC movement
 
-3. **`heap.c`** - Implements a custom heap data structure used to prioritize character movements and manage game mechanics such as turn order.
+### Technical Implementation
+- **Custom Heap Structure**: 
+  - Priority-based movement management
+  - Efficient turn order calculation
+  - Memory-optimized data storage
+- **Data Management**:
+  - CSV parsing for Pokémon data
+  - Dynamic object creation
+  - Efficient data retrieval systems
 
-4. **`poke327.cpp`** - Implements core game logic, including battle systems, world generation, and interaction between different characters and the environment.
+### Battle Mechanics
+- **Encounter System**: Proximity-based battle initiation
+- **Type Advantages**: Implementation of Pokémon type system
+- **Move Sets**: Custom move implementation for each Pokémon
+- **Battle Resolution**: Turn-based combat system
 
-5. **`io.cpp`** - Handles input and output for the game. It processes user commands and updates the display.
+## Architecture
 
-## Installation
+### Core Components
+
+### Data Structures
+- **Custom Heap**: Manages movement priority and turn order
+- **Character Matrix**: Tracks entity positions and movements
+- **Map Storage**: Efficient storage of generated maps
+- **Pokemon Database**: Structured storage of Pokemon data
+
+## Getting Started
+
 ### Prerequisites
-- A C++ compiler (e.g., `g++`).
-- A C compiler for compiling the heap structure.
-- Make sure you have the necessary libraries for file I/O and heap memory management.
+- C++ Compiler (GCC 7.0+)
+- Make build system
 
-### Build Instructions
+### Installation
+
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/PokemonASII
-   ```
-2. Navigate to the project directory and use the make file:
-   ```bash
-   make
-   ```
-3. Run the compiled program:
-   ```bash
-   ./poke_main
-   ```
+```bash
+git clone https://github.com/YourUsername/Pokemon-Simulation.git
+cd Pokemon-Simulation
+```
 
-## Usage
-1. The simulation will start by generating a map and placing characters at random positions.
-2. You can interact with the simulation through the console by entering commands to move the player or simulate battles.
-3. The program will read Pokémon and moves data from CSV files (ensure these files are available in the working directory).
-4. The game continues until all of your pokemon are defeated
-5. See how far you can survuve and explore all the maps you can!
+2. Build the project:
+```bash
+make clean
+make
+```
 
-### Sample Commands:
-- Move player: Use directional commands to move.
-- Start battle: Automatically triggered when a character encounters a player.
-- Change map: Move again at the borde of the map.
+3. Run the simulation:
+```bash
+./pokemon_sim
+```
+
+## Game Controls
+
+### Movement
+- **↑**: Move North
+- **↓**: Move South
+- **←**: Move West
+- **→**: Move East
+- **q**: Quit game
+- **f**: Fly to different coordinates
+
+### Battle System
+- Battles initiate automatically on collision
+- Follow on-screen prompts for battle options
+- Use number keys to select moves
+
+## Development Status
+
+### Current Features
+- Full map generation system
+- Basic NPC movement patterns
+- Battle system implementation
+- Character pathfinding
+- Data parsing and management
+
+### Planned Enhancements
+- Improved map generation algorithms
+- Save/Load functionality
+
+## Technical Details
+
+### Map Generation
+- Uses seeding natural growth algorithms for terrain generation
+- Implements connectivity checks for path validity
+- Maintains consistency across adjacent maps
+- Scales difficulty based on distance from origin map metrics
+
+### Pathfinding Implementation
+- Dijkstra's algorithm for NPC movement
+- Custom weight system for terrain types
+- Optimized path recalculation
+- Collision avoidance system
